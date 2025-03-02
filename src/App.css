@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+
+
+
+
+
+/* #main {
+  margin: 40px;
+  height: 100px;
+  background-color: #004C80;
+  position: relative;
+  overflow: hidden;
+}
+
+#main div {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color:white
+}
+
+.top { top: -10px; }
+.bottom { bottom: -10px; }
+.left { left: -10px; }
+.right { right: -10px; } */
+
+
+
+
+
+.corners {
+  /* width: 3/4; */
+  /* background: linear-gradient(darkturquoise, aquamarine); */
+  position: relative;
+}
+
+.corners--round-bottom {
+  -webkit-mask-image: radial-gradient(circle at bottom left, transparent 1.5rem, gold 0),
+                      radial-gradient(circle at bottom right, transparent 1.5rem, gold 0);
+  -webkit-mask-composite: destination-in;
+  mask-image: radial-gradient(circle at bottom left, transparent 1.5rem, gold 0),
+              radial-gradient(circle at bottom right, transparent 1.5rem, gold 0);
+  mask-composite: intersect;
+}
+
+.corners--round-top {
+  -webkit-mask-image: radial-gradient(circle at top left, transparent 1.5rem, gold 0),
+                      radial-gradient(circle at top right, transparent 1.5rem, gold 0);
+  -webkit-mask-composite: destination-in;
+  mask-image: radial-gradient(circle at top left, transparent 1.5rem, gold 0),
+              radial-gradient(circle at top right, transparent 1.5rem, gold 0);
+  mask-composite: intersect;
+}
+
+
+
+
+
+
+
+
+
+.border-gradient {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px; /* Ensures rounded corners */
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent; /* Fully transparent background */
+  border: none; /* Remove default border */
+}
+
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px; /* Border thickness */
+  border-radius: inherit;
+  background: linear-gradient(to left, #123bde, #10acc0);
+  mask:   linear-gradient(white, white) content-box, 
+  linear-gradient(white, white);
+  -webkit-mask: 
+    linear-gradient(white, white) content-box, 
+    linear-gradient(white, white);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
