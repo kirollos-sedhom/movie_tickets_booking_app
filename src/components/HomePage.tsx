@@ -1,5 +1,6 @@
 import React from "react";
 import wallpaper1 from "../assets/wallpaper4.jpg";
+import {Link} from "react-router-dom"
 const HomePage = () => {
   return (
     <div className="relative h-screen overflow-hidden z-0">
@@ -21,13 +22,16 @@ const HomePage = () => {
           className="border-gradient mt-4 cursor-pointer hover:shadow-md shadow-cyan-600/50 transition-all duration-300"
           onClick={handleBuyTicket}
         >
-          <span className="text-lg">اشتري تذكرة</span>
+          <Link to="/booking" className="text-lg">
+          اشتري تذكرة
+      </Link>
+          
         </button>
       </div>
     </div>
   );
 };
 function handleBuyTicket() {
-  alert("success!");
+  // alert("success!");
 }
 export default HomePage;

@@ -1,8 +1,9 @@
 import React from "react";
 import wallpaper1 from "../assets/wallpaper4.jpg";
+import qr from "../assets/test_qr.png";
 const Ticket = () => {
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center bg-white">
+    <div className="w-full h-screen flex flex-col justify-center items-center bg-slate-700">
       {/* <div id="main">
         hallo
         <div className="top left"></div>
@@ -21,7 +22,7 @@ const Ticket = () => {
         <p>الساعة 8:30 مساءً</p>
         <p>عدد التذاكر: 4</p>
       </div>
-      <img className="code w-4" src={wallpaper1}  />
+      <img className="code w-12" src={qr}  />
 
       
 

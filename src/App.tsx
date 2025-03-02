@@ -1,13 +1,23 @@
 import "./App.css";
 import Homepage from "./components/HomePage.tsx";
 import Ticket from "./components/Ticket.tsx";
-
+import Booking from "./components/Booking.tsx"
+import {TicketProvider} from "./TicketContext.tsx";
+import { BrowserRouter } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <>
-      {/* <Homepage/> */}
-      <Ticket />
-    </>
+    <TicketProvider>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/ticket" element={<Ticket />} />
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+      </BrowserRouter>
+      </TicketProvider>
+      
+    
   );
 }
 
