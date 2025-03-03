@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from "react"
+import {createContext, useContext, useState, useEffect} from "react"
 
 
 type TicketDataType = {
@@ -8,7 +8,7 @@ type TicketDataType = {
   } | null;
 
   type TicketContextType = {
-    TicketData: TicketDataType;
+    ticketData: TicketDataType;
     setTicketData: React.Dispatch<React.SetStateAction<TicketDataType>>;
   };
 
@@ -16,18 +16,23 @@ type TicketDataType = {
 
 
 export function TicketProvider({children}){
-    const [TicketData, setTicketData] = useState<TicketDataType>(null);
+  const [ticketData, setTicketData] = useState(() => {
+    // Load from localStorage (if exists), else default to null
+    const savedTicket = localStorage.getItem("ticketData");
+    return savedTicket ? JSON.parse(savedTicket) : null;
+  });
+
+    // Save data to localStorage whenever it updates
+    useEffect(() => {
+      if (ticketData) {
+        localStorage.setItem("ticketData", JSON.stringify(ticketData));
+      }
+    }, [ticketData]);
     return (
-        <TicketContext.Provider value={{TicketData,setTicketData}}>
+        <TicketContext.Provider value={{ticketData,setTicketData}}>
             {children}
         </TicketContext.Provider>
     );
 }
 
-export function useTicket() {
-    const context = useContext(TicketContext);
-    if (!context) {
-      throw new Error("useTicket must be used within a TicketProvider");
-    }
-    return context;
-  }
+export const useTicket = () => useContext(TicketContext);
